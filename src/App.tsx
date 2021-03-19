@@ -5,6 +5,8 @@ import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { ModalTransaction } from "./components/ModalTransaction";
 
+import { TransactionsProvider } from "./TransactionsContext";
+
 Modal.setAppElement("#root");
 
 export function App() {
@@ -18,13 +20,13 @@ export function App() {
     setModalIsOpen(false);
   }
   return (
-    <>
+    <TransactionsProvider>
       <Header openModal={handleOpenModal} />
       <Dashboard />
       <ModalTransaction
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
       />
-    </>
+    </TransactionsProvider>
   );
 }
